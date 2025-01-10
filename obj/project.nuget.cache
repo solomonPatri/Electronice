@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "7PWTjU/YgnaMEws4Qy7DUCYR11fVHIYJziPQ0UcvyHtDtGuJgT+4R3h+1ogncS3GMXI4TUgVnrKfYVAt1l3Cpg==",
+  "success": true,
+  "projectFilePath": "C:\\mycode\\asp.net\\Electronice\\Electronice.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\solom\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\solom\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\solom\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\solom\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\solom\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\solom\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
