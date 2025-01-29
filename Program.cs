@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 using System;
+using System.Net.WebSockets;
 using Electronice.Data;
 using FluentMigrator.Runner;
 using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
@@ -49,11 +50,11 @@ public class Program {
         {
             app.UseSwagger();
             app.UseSwaggerUI();
-            
+            app.UseHttpsRedirection();
+            app.MapControllers();
 
         }
-        app.UseHttpsRedirection();
-        app.MapControllers();
+        
 
 
         using (var scope = app.Services.CreateScope())

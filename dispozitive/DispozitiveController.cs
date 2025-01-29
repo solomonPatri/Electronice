@@ -3,6 +3,7 @@ using Electronice;
 using Electronice.dispozitive.Service;
 using Microsoft.AspNetCore.Mvc;
 using Electronice.dispozitive.Model;
+using Electronice.dispozitive.Dtos;
 
 namespace Electronice.Data
 {
@@ -31,24 +32,17 @@ namespace Electronice.Data
 
         }
 
-        [HttpGet("Samsung")]
-
-        public async Task<ActionResult<IEnumerable<Electronic>>> ElectronicsSamsung()
+        [HttpPost("create")]
+        public async Task<ActionResult<CreateElectResponse>> CreateElectronics([FromBody] CreateElectRequest createElectRequest)
         {
 
-            var electronics = await _electRepo.ElectronicsSamsung();
 
-            return Ok(electronics);
+            CreateElectResponse create = await _electRepo.CreateElectronic(createElectRequest);
 
+
+
+            return Created("", create);
         }
-           
-
-
-
-
-
-
-
 
 
 

@@ -1,4 +1,5 @@
 ﻿using Electronice;
+using Electronice.dispozitive.Dtos;
 using Electronice.dispozitive.Model;
 
 namespace Electronice.dispozitive.Service
@@ -7,7 +8,7 @@ namespace Electronice.dispozitive.Service
     {
         Task<List<Electronic>> GetAllAsync();
 
-        Task<List<Electronic>> ElectronicsSamsung();
+        Task<CreateElectResponse> CreateElectronic(CreateElectRequest createResponse);
 
         
 
