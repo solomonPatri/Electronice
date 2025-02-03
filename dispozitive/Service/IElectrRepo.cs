@@ -8,9 +8,11 @@ namespace Electronice.dispozitive.Service
     {
         Task<List<Electronic>> GetAllAsync();
 
-        Task<CreateElectResponse> CreateElectronic(CreateElectRequest createResponse);
+        Task<ElectResponse> CreateAsync(ElectRequest createResponse);
 
-        
+        Task<ElectResponse> DeleteAsync(int id);
+
+        Task<ElectResponse> UpdateAsync(int id, ElectUpdateRequest elec);
 
 
 

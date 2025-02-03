@@ -10,8 +10,13 @@ namespace Electronice.dispozitive.Mappers
         public ElectMappingProfile()
         {
 
-            CreateMap<CreateElectRequest, Electronic>();
-            CreateMap<Electronic, CreateElectResponse>();
+            CreateMap<ElectRequest, Electronic>();
+            CreateMap<Electronic, ElectResponse>();
+            CreateMap<ElectResponse, ElectUpdateRequest>();
+
+
+
+
 
 
         }

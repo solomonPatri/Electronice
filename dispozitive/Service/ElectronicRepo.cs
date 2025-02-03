@@ -28,7 +28,7 @@ namespace Electronice.dispozitive.Service
         }
        
 
-        public async Task<CreateElectResponse> CreateElectronic(CreateElectRequest createElectResponse)
+        public async Task<ElectResponse> CreateAsync(ElectRequest createElectResponse)
         {
 
             Electronic elect = _mapper.Map<Electronic>(createElectResponse);
@@ -37,15 +37,73 @@ namespace Electronice.dispozitive.Service
 
             await _appDbContext.SaveChangesAsync();
 
-            CreateElectResponse response  = _mapper.Map<CreateElectResponse>(elect);
+            ElectResponse response  = _mapper.Map<ElectResponse>(elect);
 
             return response;
+
+
+
+        }
+
+        public async Task<ElectResponse> DeleteAsync(int id)
+        {
+
+            Electronic elect = await _appDbContext.Electronics.FindAsync(id);
+
+            ElectResponse response = _mapper.Map<ElectResponse>(elect);
+
+
+             _appDbContext.Remove(elect);
+
+            await _appDbContext.SaveChangesAsync();
+            return response;
+
+        }
+
+        public async Task<ElectResponse> UpdateAsync(int id , ElectUpdateRequest elec)
+        {
+
+            Electronic electronic = await _appDbContext.Electronics.FindAsync(id);
+
+            if (elec.Dispozitiv != null)
+            {
+                electronic.Dispozitiv = elec.Dispozitiv;
+            }
+
+            if (elec.Model != null)
+            {
+                electronic.Model = elec.Model;
+
+            }
+            if (elec.Memory.HasValue)
+            {
+                electronic.Memory = elec.Memory.Value;
+            }
+
+            if (elec.Price.HasValue)
+            {
+                electronic.Price = elec.Price.Value;
+            }
+
+            _appDbContext.Electronics.Update(electronic);
+
+            await _appDbContext.SaveChangesAsync();
+
+            ElectResponse update = _mapper.Map<ElectResponse>(electronic);
+
+            return update;
 
 
 
 
 
         }
+
+
+
+
+
+
 
 
 

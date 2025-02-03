@@ -33,16 +33,56 @@ namespace Electronice.Data
         }
 
         [HttpPost("create")]
-        public async Task<ActionResult<CreateElectResponse>> CreateElectronics([FromBody] CreateElectRequest createElectRequest)
+        public async Task<ActionResult<ElectResponse>> CreateElectronics([FromBody] ElectRequest createElectRequest)
         {
 
 
-            CreateElectResponse create = await _electRepo.CreateElectronic(createElectRequest);
+            ElectResponse create = await _electRepo.CreateAsync(createElectRequest);
 
 
 
             return Created("", create);
         }
+
+        [HttpDelete("delete/{id}")]
+
+        public async Task<ActionResult<ElectResponse>> DeleteElec([FromRoute] int id)
+        {
+
+            ElectResponse response = await _electRepo.DeleteAsync(id);
+
+            return Accepted("", response);
+
+
+
+        }
+
+        [HttpPut("edit/{id}")]
+
+        public async Task<ActionResult<ElectResponse>>  EditElec([FromRoute] int id, [FromBody]ElectUpdateRequest update)
+        {
+
+            ElectResponse response = await _electRepo.UpdateAsync(id, update);
+
+            return Accepted("",response);
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
