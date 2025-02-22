@@ -22,12 +22,12 @@ namespace Electronice.dispozitive.Services
 
             ElectResponse elec = await this._repo.FindByDispozitivAsync(createResponse.Dispozitiv);
 
-            if (elec != null)
+            if (elec == null)
             {
                 ElectResponse response = await this._repo.CreateAsync(createResponse);
                 return response;
             }
-            throw new ElecNotFoundException();
+            throw new ElecAlreadyExistException ();
 
 
 
