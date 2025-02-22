@@ -2,7 +2,7 @@
 using Electronice.dispozitive.Dtos;
 using Electronice.dispozitive.Model;
 
-namespace Electronice.dispozitive.Service
+namespace Electronice.dispozitive.Repository
 {
     public interface IElectrRepo
     {
@@ -14,6 +14,11 @@ namespace Electronice.dispozitive.Service
 
         Task<ElectResponse> UpdateAsync(int id, ElectUpdateRequest elec);
 
+        Task<ElectResponse> FindByDispozitivAsync(string name);
+
+        Task<ElectResponse> FindByIdAsync(int id);
+
+        Task<GetAllNamesElecDto> GetAllElectronicsAsync();
 
 
 

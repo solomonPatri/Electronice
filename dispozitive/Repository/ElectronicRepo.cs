@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Electronice.dispozitive.Dtos;
 
-namespace Electronice.dispozitive.Service
+namespace Electronice.dispozitive.Repository
 {
     public class ElectronicRepo:IElectrRepo
     {
@@ -98,6 +98,59 @@ namespace Electronice.dispozitive.Service
 
 
         }
+
+
+
+        public async Task<ElectResponse> FindByDispozitivAsync(string name)
+        {
+
+            Electronic elec = await _appDbContext.Electronics.FirstOrDefaultAsync(e=>e.Dispozitiv.Equals(name));
+
+            ElectResponse response = _mapper.Map<ElectResponse>(elec);
+
+            return response;
+
+
+
+
+        }
+
+
+        public async Task<ElectResponse> FindByIdAsync(int id)
+        {
+            Electronic elec = await this._appDbContext.Electronics.FindAsync(id);
+
+            ElectResponse response = _mapper.Map<ElectResponse>(elec);
+
+            return response;
+
+
+
+        }
+
+
+        public async Task<GetAllNamesElecDto> GetAllElectronicsAsync()
+        {
+
+            List<string> dipsozi = await this._appDbContext.Electronics.Select(s => s.Dispozitiv).ToListAsync();
+
+            GetAllNamesElecDto response = new GetAllNamesElecDto();
+
+            response.Names = dipsozi;
+
+            return response;
+
+
+        }
+
+
+
+
+
+
+
+
+
 
 
 

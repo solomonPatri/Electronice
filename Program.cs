@@ -6,7 +6,9 @@ using System.Net.WebSockets;
 using Electronice.Data;
 using FluentMigrator.Runner;
 using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
-using Electronice.dispozitive.Service;
+using Electronice.dispozitive.Services;
+using Electronice.dispozitive.Repository;
+using Electronice.dispozitive.Services;
 
 public class Program {
 
@@ -34,6 +36,10 @@ public class Program {
 
 
         builder.Services.AddScoped<IElectrRepo, ElectronicRepo>();
+        builder.Services.AddScoped<ICommandElecService, CommandElecService>();
+        builder.Services.AddScoped<IQueryElecService, QueryElecService>();
+
+
 
         builder.Services.AddFluentMigratorCore()
             .ConfigureRunner(rb =>
