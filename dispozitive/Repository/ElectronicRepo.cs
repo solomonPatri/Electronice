@@ -4,6 +4,7 @@ using Electronice.Data;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Electronice.dispozitive.Dtos;
+using System.Data.Entity.Validation;
 
 namespace Electronice.dispozitive.Repository
 {
@@ -20,9 +21,19 @@ namespace Electronice.dispozitive.Repository
 
         }
 
-        public async Task<List<Electronic>> GetAllAsync()
+        public async Task<GetAllElectrDto> GetAllAsync()
         {
-            return await _appDbContext.Electronics.ToListAsync();
+          
+            var data = await _appDbContext.Electronics.Select(m => _mapper.Map<ElectResponse>(m)).ToListAsync();
+         
+            
+                GetAllElectrDto response = new GetAllElectrDto();
+
+                response.Dispozitive = data;
+                return response;
+            
+
+
 
 
         }
@@ -99,7 +110,20 @@ namespace Electronice.dispozitive.Repository
 
         }
 
+        public async Task<GetAllElectrDto> FindByNameDispozAsync(string name)
+        {
+            var data = await _appDbContext.Electronics.Where(n => n.Dispozitiv.Equals(name)).ToListAsync();
 
+            var elecresponse = data.Select(m => _mapper.Map<ElectResponse>(m)).ToList();
+
+            GetAllElectrDto response = new GetAllElectrDto();
+
+            response.Dispozitive = elecresponse;
+
+            return response;
+
+
+        }
 
         public async Task<ElectResponse> FindByDispozitivAsync(string name)
         {

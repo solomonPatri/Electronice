@@ -16,9 +16,9 @@ namespace Electronice.dispozitive.Services
         }
 
 
-        public async Task<List<Electronic>> GetAllAsync()
+        public async Task<GetAllElectrDto> GetAllAsync()
         {
-            List<Electronic> response = await this._repo.GetAllAsync();
+            GetAllElectrDto response = await this._repo.GetAllAsync();
             if (response != null)
             {
                 return response;
@@ -28,6 +28,24 @@ namespace Electronice.dispozitive.Services
 
 
         }
+
+        public async Task<GetAllElectrDto> FindByNameDispozAsync(string name)
+        {
+            GetAllElectrDto response = await this._repo.FindByNameDispozAsync(name);
+            if(response != null)
+            {
+
+                return response;
+
+
+            }
+            throw new ElecNotFoundException();
+
+
+        }
+
+
+
         public async Task<ElectResponse> FindByDispozitivAsync(string name)
         {
             ElectResponse response = await this._repo.FindByDispozitivAsync(name);

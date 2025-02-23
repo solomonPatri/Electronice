@@ -6,7 +6,7 @@ namespace Electronice.dispozitive.Repository
 {
     public interface IElectrRepo
     {
-        Task<List<Electronic>> GetAllAsync();
+        Task<GetAllElectrDto> GetAllAsync();
 
         Task<ElectResponse> CreateAsync(ElectRequest createResponse);
 
@@ -14,13 +14,13 @@ namespace Electronice.dispozitive.Repository
 
         Task<ElectResponse> UpdateAsync(int id, ElectUpdateRequest elec);
 
-        Task<ElectResponse> FindByDispozitivAsync(string name);
+        Task<GetAllElectrDto> FindByNameDispozAsync(string name);
 
         Task<ElectResponse> FindByIdAsync(int id);
 
         Task<GetAllNamesElecDto> GetAllElectronicsAsync();
 
-
+        Task<ElectResponse> FindByDispozitivAsync(string name);
 
 
 

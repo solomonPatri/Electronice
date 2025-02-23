@@ -27,11 +27,11 @@ namespace Electronice.Data
 
         [HttpGet("all")]
 
-        public async Task<ActionResult<IEnumerable<Electronic>>> GetAllAsync()
+        public async Task<ActionResult<GetAllElectrDto>> GetAllAsync()
         {
             try
             {
-                var electronics = await _query.GetAllAsync();
+               GetAllElectrDto electronics = await _query.GetAllAsync();
 
                 return Ok(electronics);
             }catch(ElecNotFoundException nf)
@@ -94,12 +94,12 @@ namespace Electronice.Data
 
         [HttpGet("find/Dispozitiv/{disp}")]
 
-        public async Task<ActionResult<ElectResponse>> GetByDispozitiveAsync([FromRoute] string disp)
+        public async Task<ActionResult<GetAllElectrDto>> GetByDispozitiveAsync([FromRoute] string disp)
         {
 
             try
             {
-                ElectResponse response = await this._query.FindByDispozitivAsync(disp);
+                GetAllElectrDto response = await this._query.FindByNameDispozAsync(disp);
                 return Accepted("",response);
 
 

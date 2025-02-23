@@ -5,7 +5,7 @@ namespace Electronice.dispozitive.Services
     public interface IQueryElecService
     {
 
-        Task<List<Electronic>> GetAllAsync();
+        Task<GetAllElectrDto> GetAllAsync();
         Task<ElectResponse> FindByDispozitivAsync(string name);
 
         Task<ElectResponse> FindByIdAsync(int id);
@@ -13,7 +13,7 @@ namespace Electronice.dispozitive.Services
         Task<GetAllNamesElecDto> GetAllElectronicsAsync();
 
 
-
+        Task<GetAllElectrDto> FindByNameDispozAsync(string name);
 
 
 
